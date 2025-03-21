@@ -12,7 +12,7 @@ using Order_Management.Data;
 namespace Order_Management.Migrations
 {
     [DbContext(typeof(OrderDbContext))]
-    [Migration("20250321090828_InitialCreate")]
+    [Migration("20250321165224_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -33,7 +33,7 @@ namespace Order_Management.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreateAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CustomerName")

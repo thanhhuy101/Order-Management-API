@@ -30,18 +30,18 @@ namespace Order_Management.Controllers
         [HttpGet("orders/{id}/order-details")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IEnumerable<OrderDetailDTO>>> GetOrderDetails(int orderId)
+        public async Task<ActionResult<IEnumerable<OrderDetailDTO>>> GetOrderDetails(int id)
         {
-            _logger.LogInformation("Getting order details for order ID {OrderId}", orderId);
+            _logger.LogInformation("Getting order details for order ID {OrderId}", id);
 
-            var order = await _orderRepository.GetOrderByIdAsync(orderId);
+            var order = await _orderRepository.GetOrderByIdAsync(id);
             if (order == null)
             {
-                _logger.LogWarning("Order with ID {OrderId} not found", orderId);
+                _logger.LogWarning("Order with ID {OrderId} not found", id);
                 return NotFound();
             }
 
-            var orderDetails = await _orderDetailRepository.GetOrderDetailsByOrderIdAsync(orderId);
+            var orderDetails = await _orderDetailRepository.GetOrderDetailsByOrderIdAsync(id);
 
             return Ok(_mapper.Map<IEnumerable<OrderDetailDTO>>(orderDetails));
         }

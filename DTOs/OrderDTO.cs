@@ -17,7 +17,7 @@ namespace Order_Management.DTOs
     {
         public string CustomerName { get; set; }
         public OrderStatus Status { get; set; }
-        public List<CreateOrderDetailDTO> OrderDetails { get; set; }
+        //public List<CreateOrderDetailDTO> OrderDetails { get; set; }
     }
 
     public class UpdateOrderDTO

@@ -1,0 +1,744 @@
+2025-03-22 00:00:07.112 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders/2/order-details?orderId=1 - null null
+2025-03-22 00:00:07.119 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management)'
+2025-03-22 00:00:07.126 +07:00 [INF] Route matched with {action = "GetOrderDetails", controller = "OrderDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Order_Management.DTOs.OrderDetailDTO]]] GetOrderDetails(Int32) on controller Order_Management.Controllers.OrderDetailsController (Order Management).
+2025-03-22 00:00:07.133 +07:00 [INF] Getting order details for order ID 1
+2025-03-22 00:00:07.140 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:00:07.153 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__orderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[OrderId], [o].[Price], [o].[ProductName], [o].[Quantity]
+FROM [OrderDetails] AS [o]
+WHERE [o].[OrderId] = @__orderId_0
+2025-03-22 00:00:07.160 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Order_Management.DTOs.OrderDetailDTO, Order Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-22 00:00:07.161 +07:00 [INF] Executed action Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management) in 33.1205ms
+2025-03-22 00:00:07.163 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management)'
+2025-03-22 00:00:07.164 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders/2/order-details?orderId=1 - 200 null application/json; charset=utf-8 52.1415ms
+2025-03-22 00:01:34.603 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders/1 - null null
+2025-03-22 00:01:34.606 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrdersController.GetOrder (Order Management)'
+2025-03-22 00:01:34.611 +07:00 [INF] Route matched with {action = "GetOrder", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.OrderDTO]] GetOrder(Int32) on controller Order_Management.Controllers.OrdersController (Order Management).
+2025-03-22 00:01:34.614 +07:00 [INF] Getting order with id 1
+2025-03-22 00:01:34.616 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:01:34.619 +07:00 [INF] Executing OkObjectResult, writing value of type 'Order_Management.DTOs.OrderDTO'.
+2025-03-22 00:01:34.620 +07:00 [INF] Executed action Order_Management.Controllers.OrdersController.GetOrder (Order Management) in 7.7425ms
+2025-03-22 00:01:34.621 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrdersController.GetOrder (Order Management)'
+2025-03-22 00:01:34.622 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders/1 - 200 null application/json; charset=utf-8 19.0182ms
+2025-03-22 00:04:58.759 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5029/api/orders - application/json 156
+2025-03-22 00:04:58.763 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrdersController.CreateOrder (Order Management)'
+2025-03-22 00:04:58.765 +07:00 [INF] Route matched with {action = "CreateOrder", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.OrderDTO]] CreateOrder(Order_Management.DTOs.CreateOrderDTO) on controller Order_Management.Controllers.OrdersController (Order Management).
+2025-03-22 00:04:58.768 +07:00 [INF] Creating a new order for customer bubu
+2025-03-22 00:04:58.773 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 255), @p2='?' (DbType = Int32), @p3='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p4='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Orders] ([CreatedAt], [CustomerName], [Status], [TotalAmount], [UpdatedAt])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2025-03-22 00:04:58.777 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@p5='?' (DbType = Int32), @p6='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p7='?' (Size = 255), @p8='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [OrderDetails] ([OrderId], [Price], [ProductName], [Quantity])
+OUTPUT INSERTED.[Id]
+VALUES (@p5, @p6, @p7, @p8);
+2025-03-22 00:04:58.781 +07:00 [INF] Executing CreatedAtActionResult, writing value of type 'Order_Management.DTOs.OrderDTO'.
+2025-03-22 00:04:58.783 +07:00 [INF] Executed action Order_Management.Controllers.OrdersController.CreateOrder (Order Management) in 16.68ms
+2025-03-22 00:04:58.784 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrdersController.CreateOrder (Order Management)'
+2025-03-22 00:04:58.785 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5029/api/orders - 201 null application/json; charset=utf-8 25.9644ms
+2025-03-22 00:05:18.860 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders?pageNumber=1&pageSize=10 - null null
+2025-03-22 00:05:18.864 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrdersController.GetOrders (Order Management)'
+2025-03-22 00:05:18.868 +07:00 [INF] Route matched with {action = "GetOrders", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.PaginatedResult`1[Order_Management.DTOs.OrderDTO]]] GetOrders(Int32, Int32) on controller Order_Management.Controllers.OrdersController (Order Management).
+2025-03-22 00:05:18.873 +07:00 [INF] Getting all orders, page 1, size 10
+2025-03-22 00:05:18.899 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-03-22 00:05:18.908 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-03-22 00:05:18.910 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-03-22 00:05:18.931 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o0].[Id], [o0].[CreatedAt], [o0].[CustomerName], [o0].[Status], [o0].[TotalAmount], [o0].[UpdatedAt], [o1].[Id], [o1].[OrderId], [o1].[Price], [o1].[ProductName], [o1].[Quantity]
+FROM (
+    SELECT [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [o0]
+LEFT JOIN [OrderDetails] AS [o1] ON [o0].[Id] = [o1].[OrderId]
+ORDER BY [o0].[CreatedAt] DESC, [o0].[Id]
+2025-03-22 00:05:18.939 +07:00 [INF] Executing OkObjectResult, writing value of type 'Order_Management.DTOs.PaginatedResult`1[[Order_Management.DTOs.OrderDTO, Order Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-22 00:05:18.943 +07:00 [INF] Executed action Order_Management.Controllers.OrdersController.GetOrders (Order Management) in 71.9383ms
+2025-03-22 00:05:18.944 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrdersController.GetOrders (Order Management)'
+2025-03-22 00:05:18.945 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders?pageNumber=1&pageSize=10 - 200 null application/json; charset=utf-8 84.8132ms
+2025-03-22 00:05:35.034 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders/2 - null null
+2025-03-22 00:05:35.037 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrdersController.GetOrder (Order Management)'
+2025-03-22 00:05:35.038 +07:00 [INF] Route matched with {action = "GetOrder", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.OrderDTO]] GetOrder(Int32) on controller Order_Management.Controllers.OrdersController (Order Management).
+2025-03-22 00:05:35.041 +07:00 [INF] Getting order with id 2
+2025-03-22 00:05:35.044 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:05:35.047 +07:00 [INF] Executing OkObjectResult, writing value of type 'Order_Management.DTOs.OrderDTO'.
+2025-03-22 00:05:35.049 +07:00 [INF] Executed action Order_Management.Controllers.OrdersController.GetOrder (Order Management) in 8.208ms
+2025-03-22 00:05:35.050 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrdersController.GetOrder (Order Management)'
+2025-03-22 00:05:35.051 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders/2 - 200 null application/json; charset=utf-8 17.2797ms
+2025-03-22 00:13:06.573 +07:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:13:06.618 +07:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-03-22 00:13:06.631 +07:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-03-22 00:13:06.679 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-03-22 00:13:06.687 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:13:06.689 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-03-22 00:13:06.692 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-03-22 00:13:06.698 +07:00 [INF] No migrations were applied. The database is already up to date.
+2025-03-22 00:13:06.700 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-03-22 00:13:06.702 +07:00 [INF] Database migrated successfully
+2025-03-22 00:13:06.749 +07:00 [INF] Now listening on: http://localhost:5029
+2025-03-22 00:13:06.850 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-22 00:13:06.852 +07:00 [INF] Hosting environment: Development
+2025-03-22 00:13:06.853 +07:00 [INF] Content root path: D:\demo .net\Order Management
+2025-03-22 00:13:06.982 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/index.html - null null
+2025-03-22 00:13:07.158 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/index.html - 200 null text/html;charset=utf-8 177.0067ms
+2025-03-22 00:13:07.521 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-22 00:13:07.522 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_vs/browserLink - null null
+2025-03-22 00:13:07.526 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 5.4503ms
+2025-03-22 00:13:07.549 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_vs/browserLink - 200 null text/javascript; charset=UTF-8 27.1303ms
+2025-03-22 00:13:08.341 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - null null
+2025-03-22 00:13:08.474 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 132.9374ms
+2025-03-22 00:13:20.977 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders/1/order-details/2 - null null
+2025-03-22 00:13:20.984 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetailById (Order Management)'
+2025-03-22 00:13:21.007 +07:00 [INF] Route matched with {action = "GetOrderDetailById", controller = "OrderDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.OrderDetailDTO]] GetOrderDetailById(Int32, Int32) on controller Order_Management.Controllers.OrderDetailsController (Order Management).
+2025-03-22 00:13:21.092 +07:00 [INF] Getting order detail ID 2 for order ID 1
+2025-03-22 00:13:21.422 +07:00 [INF] Executed DbCommand (18ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:13:21.515 +07:00 [INF] Executing OkObjectResult, writing value of type 'Order_Management.DTOs.OrderDetailDTO'.
+2025-03-22 00:13:21.525 +07:00 [INF] Executed action Order_Management.Controllers.OrderDetailsController.GetOrderDetailById (Order Management) in 513.7563ms
+2025-03-22 00:13:21.526 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetailById (Order Management)'
+2025-03-22 00:13:21.532 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders/1/order-details/2 - 200 null application/json; charset=utf-8 555.2206ms
+2025-03-22 00:14:53.166 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5029/api/orders/4/order-details?orderId=2 - application/json 65
+2025-03-22 00:14:53.169 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrderDetailsController.AddOrderDetail (Order Management)'
+2025-03-22 00:14:53.175 +07:00 [INF] Route matched with {action = "AddOrderDetail", controller = "OrderDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.OrderDetailDTO]] AddOrderDetail(Int32, Order_Management.DTOs.CreateOrderDetailDTO) on controller Order_Management.Controllers.OrderDetailsController (Order Management).
+2025-03-22 00:14:53.219 +07:00 [INF] Adding order detail to order ID 2
+2025-03-22 00:14:53.288 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:14:53.395 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (Size = 255), @p3='?' (DbType = Int32), @p6='?' (DbType = Int32), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [OrderDetails] ([OrderId], [Price], [ProductName], [Quantity])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+UPDATE [Orders] SET [TotalAmount] = @p4, [UpdatedAt] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;
+2025-03-22 00:14:53.418 +07:00 [INF] Executing CreatedAtActionResult, writing value of type 'Order_Management.DTOs.OrderDetailDTO'.
+2025-03-22 00:14:53.430 +07:00 [INF] Executed action Order_Management.Controllers.OrderDetailsController.AddOrderDetail (Order Management) in 253.4764ms
+2025-03-22 00:14:53.432 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrderDetailsController.AddOrderDetail (Order Management)'
+2025-03-22 00:14:53.433 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-03-22 00:14:53.443 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5029/api/orders/4/order-details?orderId=2 - 500 null text/plain; charset=utf-8 277.4732ms
+2025-03-22 00:18:36.986 +07:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:18:37.035 +07:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-03-22 00:18:37.052 +07:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-03-22 00:18:37.112 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-03-22 00:18:37.120 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:18:37.123 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-03-22 00:18:37.127 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-03-22 00:18:37.135 +07:00 [INF] No migrations were applied. The database is already up to date.
+2025-03-22 00:18:37.138 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-03-22 00:18:37.140 +07:00 [INF] Database migrated successfully
+2025-03-22 00:18:37.186 +07:00 [INF] Now listening on: http://localhost:5029
+2025-03-22 00:18:37.271 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-22 00:18:37.272 +07:00 [INF] Hosting environment: Development
+2025-03-22 00:18:37.273 +07:00 [INF] Content root path: D:\demo .net\Order Management
+2025-03-22 00:18:37.527 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/index.html - null null
+2025-03-22 00:18:37.664 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/index.html - 200 null text/html;charset=utf-8 137.7818ms
+2025-03-22 00:18:38.009 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-22 00:18:38.011 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_vs/browserLink - null null
+2025-03-22 00:18:38.015 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 5.537ms
+2025-03-22 00:18:38.038 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_vs/browserLink - 200 null text/javascript; charset=UTF-8 27.1331ms
+2025-03-22 00:18:38.592 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - null null
+2025-03-22 00:18:38.706 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 113.2391ms
+2025-03-22 00:19:24.879 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders/1/order-details?orderId=1 - null null
+2025-03-22 00:19:24.885 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management)'
+2025-03-22 00:19:24.906 +07:00 [INF] Route matched with {action = "GetOrderDetails", controller = "OrderDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Order_Management.DTOs.OrderDetailDTO]]] GetOrderDetails(Int32) on controller Order_Management.Controllers.OrderDetailsController (Order Management).
+2025-03-22 00:19:24.992 +07:00 [INF] Getting order details for order ID 1
+2025-03-22 00:19:25.298 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:19:25.365 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__orderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[OrderId], [o].[Price], [o].[ProductName], [o].[Quantity]
+FROM [OrderDetails] AS [o]
+WHERE [o].[OrderId] = @__orderId_0
+2025-03-22 00:19:25.381 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Order_Management.DTOs.OrderDetailDTO, Order Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-22 00:19:25.391 +07:00 [INF] Executed action Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management) in 479.4214ms
+2025-03-22 00:19:25.392 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management)'
+2025-03-22 00:19:25.397 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders/1/order-details?orderId=1 - 200 null application/json; charset=utf-8 518.0544ms
+2025-03-22 00:22:54.867 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:22:54.918 +07:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-03-22 00:22:54.934 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-03-22 00:22:54.992 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-03-22 00:22:55.002 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:22:55.005 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-03-22 00:22:55.009 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-03-22 00:22:55.017 +07:00 [INF] No migrations were applied. The database is already up to date.
+2025-03-22 00:22:55.019 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-03-22 00:22:55.022 +07:00 [INF] Database migrated successfully
+2025-03-22 00:22:55.085 +07:00 [INF] Now listening on: http://localhost:5029
+2025-03-22 00:22:55.186 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-22 00:22:55.188 +07:00 [INF] Hosting environment: Development
+2025-03-22 00:22:55.189 +07:00 [INF] Content root path: D:\demo .net\Order Management
+2025-03-22 00:22:55.413 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/index.html - null null
+2025-03-22 00:22:55.543 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/index.html - 200 null text/html;charset=utf-8 130.8441ms
+2025-03-22 00:22:55.867 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-22 00:22:55.869 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_vs/browserLink - null null
+2025-03-22 00:22:55.872 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 4.74ms
+2025-03-22 00:22:55.892 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.9324ms
+2025-03-22 00:22:56.374 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - null null
+2025-03-22 00:22:56.481 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 107.0275ms
+2025-03-22 00:23:13.483 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders/1/order-details - null null
+2025-03-22 00:23:13.493 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management)'
+2025-03-22 00:23:13.532 +07:00 [INF] Route matched with {action = "GetOrderDetails", controller = "OrderDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Order_Management.DTOs.OrderDetailDTO]]] GetOrderDetails(Int32) on controller Order_Management.Controllers.OrderDetailsController (Order Management).
+2025-03-22 00:23:13.626 +07:00 [INF] Getting order details for order ID 1
+2025-03-22 00:23:13.956 +07:00 [INF] Executed DbCommand (14ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:23:14.028 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__orderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[OrderId], [o].[Price], [o].[ProductName], [o].[Quantity]
+FROM [OrderDetails] AS [o]
+WHERE [o].[OrderId] = @__orderId_0
+2025-03-22 00:23:14.043 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Order_Management.DTOs.OrderDetailDTO, Order Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-22 00:23:14.053 +07:00 [INF] Executed action Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management) in 516.0007ms
+2025-03-22 00:23:14.055 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management)'
+2025-03-22 00:23:14.058 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders/1/order-details - 200 null application/json; charset=utf-8 575.0548ms
+2025-03-22 00:23:22.326 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders/2/order-details - null null
+2025-03-22 00:23:22.330 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management)'
+2025-03-22 00:23:22.332 +07:00 [INF] Route matched with {action = "GetOrderDetails", controller = "OrderDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Order_Management.DTOs.OrderDetailDTO]]] GetOrderDetails(Int32) on controller Order_Management.Controllers.OrderDetailsController (Order Management).
+2025-03-22 00:23:22.343 +07:00 [INF] Getting order details for order ID 2
+2025-03-22 00:23:22.401 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:23:22.406 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[@__orderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[OrderId], [o].[Price], [o].[ProductName], [o].[Quantity]
+FROM [OrderDetails] AS [o]
+WHERE [o].[OrderId] = @__orderId_0
+2025-03-22 00:23:22.408 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Order_Management.DTOs.OrderDetailDTO, Order Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-22 00:23:22.410 +07:00 [INF] Executed action Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management) in 76.5048ms
+2025-03-22 00:23:22.411 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management)'
+2025-03-22 00:23:22.413 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders/2/order-details - 200 null application/json; charset=utf-8 86.1583ms
+2025-03-22 00:24:56.340 +07:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5029/api/orders/2 - application/json 43
+2025-03-22 00:24:56.344 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrdersController.UpdateOrder (Order Management)'
+2025-03-22 00:24:56.351 +07:00 [INF] Route matched with {action = "UpdateOrder", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.OrderDTO]] UpdateOrder(Int32, Order_Management.DTOs.UpdateOrderDTO) on controller Order_Management.Controllers.OrdersController (Order Management).
+2025-03-22 00:24:56.381 +07:00 [INF] Updating order with ID 2
+2025-03-22 00:24:56.392 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:24:56.415 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__order_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__order_Id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:24:56.499 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?' (Size = 255), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Orders] SET [CustomerName] = @p0, [Status] = @p1, [UpdatedAt] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2025-03-22 00:24:56.514 +07:00 [INF] Executing OkObjectResult, writing value of type 'Order_Management.DTOs.OrderDTO'.
+2025-03-22 00:24:56.521 +07:00 [INF] Executed action Order_Management.Controllers.OrdersController.UpdateOrder (Order Management) in 167.086ms
+2025-03-22 00:24:56.522 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrdersController.UpdateOrder (Order Management)'
+2025-03-22 00:24:56.523 +07:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5029/api/orders/2 - 200 null application/json; charset=utf-8 182.6024ms
+2025-03-22 00:27:20.643 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders - null null
+2025-03-22 00:27:20.646 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrdersController.GetOrders (Order Management)'
+2025-03-22 00:27:20.651 +07:00 [INF] Route matched with {action = "GetOrders", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.PaginatedResult`1[Order_Management.DTOs.OrderDTO]]] GetOrders(Int32, Int32) on controller Order_Management.Controllers.OrdersController (Order Management).
+2025-03-22 00:27:20.654 +07:00 [INF] Getting all orders, page 1, size 10
+2025-03-22 00:27:20.673 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-03-22 00:27:20.679 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-03-22 00:27:20.680 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-03-22 00:27:20.694 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o0].[Id], [o0].[CreatedAt], [o0].[CustomerName], [o0].[Status], [o0].[TotalAmount], [o0].[UpdatedAt], [o1].[Id], [o1].[OrderId], [o1].[Price], [o1].[ProductName], [o1].[Quantity]
+FROM (
+    SELECT [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [o0]
+LEFT JOIN [OrderDetails] AS [o1] ON [o0].[Id] = [o1].[OrderId]
+ORDER BY [o0].[CreatedAt] DESC, [o0].[Id]
+2025-03-22 00:27:20.705 +07:00 [INF] Executing OkObjectResult, writing value of type 'Order_Management.DTOs.PaginatedResult`1[[Order_Management.DTOs.OrderDTO, Order Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-22 00:27:20.708 +07:00 [INF] Executed action Order_Management.Controllers.OrdersController.GetOrders (Order Management) in 55.4464ms
+2025-03-22 00:27:20.709 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrdersController.GetOrders (Order Management)'
+2025-03-22 00:27:20.710 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders - 200 null application/json; charset=utf-8 66.9718ms
+2025-03-22 00:29:02.789 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders - null null
+2025-03-22 00:29:02.794 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrdersController.GetOrders (Order Management)'
+2025-03-22 00:29:02.795 +07:00 [INF] Route matched with {action = "GetOrders", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.PaginatedResult`1[Order_Management.DTOs.OrderDTO]]] GetOrders(Int32, Int32) on controller Order_Management.Controllers.OrdersController (Order Management).
+2025-03-22 00:29:02.798 +07:00 [INF] Getting all orders, page 1, size 10
+2025-03-22 00:29:02.802 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-03-22 00:29:02.809 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o0].[Id], [o0].[CreatedAt], [o0].[CustomerName], [o0].[Status], [o0].[TotalAmount], [o0].[UpdatedAt], [o1].[Id], [o1].[OrderId], [o1].[Price], [o1].[ProductName], [o1].[Quantity]
+FROM (
+    SELECT [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [o0]
+LEFT JOIN [OrderDetails] AS [o1] ON [o0].[Id] = [o1].[OrderId]
+ORDER BY [o0].[CreatedAt] DESC, [o0].[Id]
+2025-03-22 00:29:02.812 +07:00 [INF] Executing OkObjectResult, writing value of type 'Order_Management.DTOs.PaginatedResult`1[[Order_Management.DTOs.OrderDTO, Order Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-22 00:29:02.813 +07:00 [INF] Executed action Order_Management.Controllers.OrdersController.GetOrders (Order Management) in 17.1634ms
+2025-03-22 00:29:02.815 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrdersController.GetOrders (Order Management)'
+2025-03-22 00:29:02.816 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders - 200 null application/json; charset=utf-8 26.4506ms
+2025-03-22 00:30:35.378 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders/1 - null null
+2025-03-22 00:30:35.381 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrdersController.GetOrder (Order Management)'
+2025-03-22 00:30:35.385 +07:00 [INF] Route matched with {action = "GetOrder", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.OrderDTO]] GetOrder(Int32) on controller Order_Management.Controllers.OrdersController (Order Management).
+2025-03-22 00:30:35.388 +07:00 [INF] Getting order with id 1
+2025-03-22 00:30:35.392 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:30:35.395 +07:00 [INF] Executing OkObjectResult, writing value of type 'Order_Management.DTOs.OrderDTO'.
+2025-03-22 00:30:35.396 +07:00 [INF] Executed action Order_Management.Controllers.OrdersController.GetOrder (Order Management) in 9.1511ms
+2025-03-22 00:30:35.397 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrdersController.GetOrder (Order Management)'
+2025-03-22 00:30:35.398 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders/1 - 200 null application/json; charset=utf-8 19.9502ms
+2025-03-22 00:39:59.764 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:39:59.810 +07:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-03-22 00:39:59.839 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-03-22 00:39:59.918 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-03-22 00:39:59.927 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:39:59.929 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-03-22 00:39:59.933 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-03-22 00:39:59.941 +07:00 [INF] No migrations were applied. The database is already up to date.
+2025-03-22 00:39:59.947 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-03-22 00:39:59.950 +07:00 [INF] Database migrated successfully
+2025-03-22 00:40:00.009 +07:00 [INF] Now listening on: http://localhost:5029
+2025-03-22 00:40:00.112 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-22 00:40:00.114 +07:00 [INF] Hosting environment: Development
+2025-03-22 00:40:00.115 +07:00 [INF] Content root path: D:\demo .net\Order Management
+2025-03-22 00:40:00.522 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/index.html - null null
+2025-03-22 00:40:00.669 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/index.html - 200 null text/html;charset=utf-8 148.3791ms
+2025-03-22 00:40:00.759 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-22 00:40:00.775 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 15.7951ms
+2025-03-22 00:40:01.034 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_vs/browserLink - null null
+2025-03-22 00:40:01.060 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.8316ms
+2025-03-22 00:40:01.516 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - null null
+2025-03-22 00:40:01.650 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 133.7466ms
+2025-03-22 00:41:14.578 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:41:14.628 +07:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-03-22 00:41:14.645 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-03-22 00:41:14.703 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-03-22 00:41:14.711 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:41:14.714 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-03-22 00:41:14.718 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-03-22 00:41:14.726 +07:00 [INF] No migrations were applied. The database is already up to date.
+2025-03-22 00:41:14.728 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-03-22 00:41:14.730 +07:00 [INF] Database migrated successfully
+2025-03-22 00:41:14.778 +07:00 [INF] Now listening on: http://localhost:5029
+2025-03-22 00:41:14.866 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-22 00:41:14.867 +07:00 [INF] Hosting environment: Development
+2025-03-22 00:41:14.869 +07:00 [INF] Content root path: D:\demo .net\Order Management
+2025-03-22 00:41:15.099 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/index.html - null null
+2025-03-22 00:41:15.296 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/index.html - 200 null text/html;charset=utf-8 198.9849ms
+2025-03-22 00:41:15.706 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_vs/browserLink - null null
+2025-03-22 00:41:15.706 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-22 00:41:15.714 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 7.8188ms
+2025-03-22 00:41:15.734 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_vs/browserLink - 200 null text/javascript; charset=UTF-8 27.8104ms
+2025-03-22 00:41:16.605 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - null null
+2025-03-22 00:41:16.733 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 128.5096ms
+2025-03-22 00:42:19.410 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders/1/order-details - null null
+2025-03-22 00:42:19.419 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management)'
+2025-03-22 00:42:19.446 +07:00 [INF] Route matched with {action = "GetOrderDetails", controller = "OrderDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Order_Management.DTOs.OrderDetailDTO]]] GetOrderDetails(Int32) on controller Order_Management.Controllers.OrderDetailsController (Order Management).
+2025-03-22 00:42:19.547 +07:00 [INF] Getting order details for order ID 1
+2025-03-22 00:42:19.924 +07:00 [INF] Executed DbCommand (23ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:42:20.013 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__orderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[OrderId], [o].[Price], [o].[ProductName], [o].[Quantity]
+FROM [OrderDetails] AS [o]
+WHERE [o].[OrderId] = @__orderId_0
+2025-03-22 00:42:20.030 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Order_Management.DTOs.OrderDetailDTO, Order Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-22 00:42:20.042 +07:00 [INF] Executed action Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management) in 590.9442ms
+2025-03-22 00:42:20.045 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management)'
+2025-03-22 00:42:20.050 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders/1/order-details - 200 null application/json; charset=utf-8 640.2444ms
+2025-03-22 00:42:23.853 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/index.html - null null
+2025-03-22 00:42:23.862 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/index.html - 200 null text/html;charset=utf-8 8.6551ms
+2025-03-22 00:42:23.925 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_vs/browserLink - null null
+2025-03-22 00:42:23.938 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_vs/browserLink - 200 null text/javascript; charset=UTF-8 12.7767ms
+2025-03-22 00:42:23.945 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-22 00:42:23.948 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 3.4172ms
+2025-03-22 00:42:24.672 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - null null
+2025-03-22 00:42:24.692 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 20.5034ms
+2025-03-22 00:43:42.320 +07:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:43:42.377 +07:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-03-22 00:43:42.392 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-03-22 00:43:42.459 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-03-22 00:43:42.467 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:43:42.469 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-03-22 00:43:42.473 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-03-22 00:43:42.480 +07:00 [INF] No migrations were applied. The database is already up to date.
+2025-03-22 00:43:42.482 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-03-22 00:43:42.485 +07:00 [INF] Database migrated successfully
+2025-03-22 00:43:42.546 +07:00 [INF] Now listening on: http://localhost:5029
+2025-03-22 00:43:42.669 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-22 00:43:42.680 +07:00 [INF] Hosting environment: Development
+2025-03-22 00:43:42.693 +07:00 [INF] Content root path: D:\demo .net\Order Management
+2025-03-22 00:43:42.741 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/index.html - null null
+2025-03-22 00:43:42.889 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/index.html - 200 null text/html;charset=utf-8 149.5987ms
+2025-03-22 00:43:43.021 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-22 00:43:43.021 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_vs/browserLink - null null
+2025-03-22 00:43:43.026 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 5.3375ms
+2025-03-22 00:43:43.051 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_vs/browserLink - 200 null text/javascript; charset=UTF-8 30.138ms
+2025-03-22 00:43:43.302 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - null null
+2025-03-22 00:43:43.419 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 117.9682ms
+2025-03-22 00:47:05.868 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:47:05.914 +07:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-03-22 00:47:05.929 +07:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-03-22 00:47:05.989 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-03-22 00:47:05.998 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-22 00:47:06.001 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-03-22 00:47:06.006 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-03-22 00:47:06.014 +07:00 [INF] No migrations were applied. The database is already up to date.
+2025-03-22 00:47:06.016 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-03-22 00:47:06.019 +07:00 [INF] Database migrated successfully
+2025-03-22 00:47:06.073 +07:00 [INF] Now listening on: http://localhost:5029
+2025-03-22 00:47:06.163 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-22 00:47:06.165 +07:00 [INF] Hosting environment: Development
+2025-03-22 00:47:06.166 +07:00 [INF] Content root path: D:\demo .net\Order Management
+2025-03-22 00:47:06.509 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/index.html - null null
+2025-03-22 00:47:06.726 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/index.html - 200 null text/html;charset=utf-8 221.908ms
+2025-03-22 00:47:07.315 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-22 00:47:07.315 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_vs/browserLink - null null
+2025-03-22 00:47:07.323 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 7.8087ms
+2025-03-22 00:47:07.356 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_vs/browserLink - 200 null text/javascript; charset=UTF-8 40.5835ms
+2025-03-22 00:47:08.584 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - null null
+2025-03-22 00:47:08.765 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 180.9375ms
+2025-03-22 00:47:44.494 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5029/api/orders - application/json 43
+2025-03-22 00:47:44.502 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrdersController.CreateOrder (Order Management)'
+2025-03-22 00:47:44.546 +07:00 [INF] Route matched with {action = "CreateOrder", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.OrderDTO]] CreateOrder(Order_Management.DTOs.CreateOrderDTO) on controller Order_Management.Controllers.OrdersController (Order Management).
+2025-03-22 00:47:44.659 +07:00 [INF] Creating a new order for customer bubu
+2025-03-22 00:47:44.896 +07:00 [INF] Executed DbCommand (24ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 255), @p2='?' (DbType = Int32), @p3='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p4='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Orders] ([CreatedAt], [CustomerName], [Status], [TotalAmount], [UpdatedAt])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2025-03-22 00:47:44.939 +07:00 [INF] Executing CreatedAtActionResult, writing value of type 'Order_Management.DTOs.OrderDTO'.
+2025-03-22 00:47:44.971 +07:00 [INF] Executed action Order_Management.Controllers.OrdersController.CreateOrder (Order Management) in 419.1721ms
+2025-03-22 00:47:44.973 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrdersController.CreateOrder (Order Management)'
+2025-03-22 00:47:44.978 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5029/api/orders - 201 null application/json; charset=utf-8 483.9516ms
+2025-03-22 00:48:28.543 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders?pageNumber=1&pageSize=10 - null null
+2025-03-22 00:48:28.548 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrdersController.GetOrders (Order Management)'
+2025-03-22 00:48:28.556 +07:00 [INF] Route matched with {action = "GetOrders", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.PaginatedResult`1[Order_Management.DTOs.OrderDTO]]] GetOrders(Int32, Int32) on controller Order_Management.Controllers.OrdersController (Order Management).
+2025-03-22 00:48:28.567 +07:00 [INF] Getting all orders, page 1, size 10
+2025-03-22 00:48:28.802 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Orders] AS [o]
+2025-03-22 00:48:28.836 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-03-22 00:48:28.838 +07:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-03-22 00:48:28.942 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o0].[Id], [o0].[CreatedAt], [o0].[CustomerName], [o0].[Status], [o0].[TotalAmount], [o0].[UpdatedAt], [o1].[Id], [o1].[OrderId], [o1].[Price], [o1].[ProductName], [o1].[Quantity]
+FROM (
+    SELECT [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    ORDER BY (SELECT 1)
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [o0]
+LEFT JOIN [OrderDetails] AS [o1] ON [o0].[Id] = [o1].[OrderId]
+ORDER BY [o0].[CreatedAt] DESC, [o0].[Id]
+2025-03-22 00:48:28.976 +07:00 [INF] Executing OkObjectResult, writing value of type 'Order_Management.DTOs.PaginatedResult`1[[Order_Management.DTOs.OrderDTO, Order Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-22 00:48:28.980 +07:00 [INF] Executed action Order_Management.Controllers.OrdersController.GetOrders (Order Management) in 422.3298ms
+2025-03-22 00:48:28.981 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrdersController.GetOrders (Order Management)'
+2025-03-22 00:48:28.983 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders?pageNumber=1&pageSize=10 - 200 null application/json; charset=utf-8 439.2996ms
+2025-03-22 00:48:52.650 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5029/api/orders/5/order-details?orderId=3 - application/json 62
+2025-03-22 00:48:52.653 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrderDetailsController.AddOrderDetail (Order Management)'
+2025-03-22 00:48:52.659 +07:00 [INF] Route matched with {action = "AddOrderDetail", controller = "OrderDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Order_Management.DTOs.OrderDetailDTO]] AddOrderDetail(Int32, Order_Management.DTOs.CreateOrderDetailDTO) on controller Order_Management.Controllers.OrderDetailsController (Order Management).
+2025-03-22 00:48:52.680 +07:00 [INF] Adding order detail to order ID 3
+2025-03-22 00:48:52.712 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:48:52.741 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (Size = 255), @p3='?' (DbType = Int32), @p6='?' (DbType = Int32), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [OrderDetails] ([OrderId], [Price], [ProductName], [Quantity])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+UPDATE [Orders] SET [TotalAmount] = @p4, [UpdatedAt] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;
+2025-03-22 00:48:52.752 +07:00 [INF] Executing CreatedAtActionResult, writing value of type 'Order_Management.DTOs.OrderDetailDTO'.
+2025-03-22 00:48:52.754 +07:00 [INF] Executed action Order_Management.Controllers.OrderDetailsController.AddOrderDetail (Order Management) in 91.6906ms
+2025-03-22 00:48:52.755 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrderDetailsController.AddOrderDetail (Order Management)'
+2025-03-22 00:48:52.758 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No route matches the supplied values.
+   at Microsoft.AspNetCore.Mvc.CreatedAtActionResult.OnFormatting(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsyncCore(ActionContext context, ObjectResult result, Type objectType, Object value)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor.ExecuteAsync(ActionContext context, ObjectResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-03-22 00:48:52.775 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5029/api/orders/5/order-details?orderId=3 - 500 null text/plain; charset=utf-8 124.4158ms
+2025-03-22 00:49:28.043 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/api/orders/3/order-details - null null
+2025-03-22 00:49:28.046 +07:00 [INF] Executing endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management)'
+2025-03-22 00:49:28.052 +07:00 [INF] Route matched with {action = "GetOrderDetails", controller = "OrderDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Order_Management.DTOs.OrderDetailDTO]]] GetOrderDetails(Int32) on controller Order_Management.Controllers.OrderDetailsController (Order Management).
+2025-03-22 00:49:28.057 +07:00 [INF] Getting order details for order ID 3
+2025-03-22 00:49:28.063 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o1].[Id], [o1].[CreatedAt], [o1].[CustomerName], [o1].[Status], [o1].[TotalAmount], [o1].[UpdatedAt], [o0].[Id], [o0].[OrderId], [o0].[Price], [o0].[ProductName], [o0].[Quantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[CustomerName], [o].[Status], [o].[TotalAmount], [o].[UpdatedAt]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__id_0
+) AS [o1]
+LEFT JOIN [OrderDetails] AS [o0] ON [o1].[Id] = [o0].[OrderId]
+ORDER BY [o1].[Id]
+2025-03-22 00:49:28.073 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__orderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[OrderId], [o].[Price], [o].[ProductName], [o].[Quantity]
+FROM [OrderDetails] AS [o]
+WHERE [o].[OrderId] = @__orderId_0
+2025-03-22 00:49:28.078 +07:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Order_Management.DTOs.OrderDetailDTO, Order Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-03-22 00:49:28.080 +07:00 [INF] Executed action Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management) in 25.6299ms
+2025-03-22 00:49:28.081 +07:00 [INF] Executed endpoint 'Order_Management.Controllers.OrderDetailsController.GetOrderDetails (Order Management)'
+2025-03-22 00:49:28.083 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/api/orders/3/order-details - 200 null application/json; charset=utf-8 39.4493ms

@@ -18,7 +18,7 @@ namespace Order_Management.Repositories
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .Include(o => o.OrderDetails)
-                .OrderByDescending(o => o.CreateAt)
+                .OrderByDescending(o => o.CreatedAt)
                 .ToListAsync();
 
             return new PaginatedResult<Order>
@@ -45,7 +45,7 @@ namespace Order_Management.Repositories
 
         public async Task<Order> CreateOrderAsync(Order order)
         {
-            order.CreateAt = DateTime.Now;
+            order.CreatedAt = DateTime.Now;
             order.UpdatedAt = DateTime.Now;
 
             // Calculate TotalAmount
