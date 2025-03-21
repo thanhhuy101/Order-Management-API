@@ -8,7 +8,7 @@ using Order_Management.Interfaces;
 namespace Order_Management.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api")]
     public class OrderDetailsController : ControllerBase
     {
         private readonly IOrderRepository _orderRepository;

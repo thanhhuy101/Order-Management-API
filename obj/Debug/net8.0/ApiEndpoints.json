@@ -2,7 +2,7 @@
   {
     "ContainingType": "Order_Management.Controllers.OrderDetailsController",
     "Method": "DeleteOrderDetail",
-    "RelativePath": "api/OrderDetails/order-details/{id}",
+    "RelativePath": "api/order-details/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -31,103 +31,9 @@
     ]
   },
   {
-    "ContainingType": "Order_Management.Controllers.OrderDetailsController",
-    "Method": "GetOrderDetails",
-    "RelativePath": "api/OrderDetails/orders/{id}/order-details",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "orderId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "id",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Order_Management.DTOs.OrderDetailDTO, Order Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      }
-    ]
-  },
-  {
-    "ContainingType": "Order_Management.Controllers.OrderDetailsController",
-    "Method": "AddOrderDetail",
-    "RelativePath": "api/OrderDetails/orders/{id}/order-details",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "orderId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "createOrderDetailDto",
-        "Type": "Order_Management.DTOs.CreateOrderDetailDTO",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Order_Management.DTOs.OrderDetailDTO",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 201
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 400
-      },
-      {
-        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 404
-      }
-    ]
-  },
-  {
     "ContainingType": "Order_Management.Controllers.OrdersController",
     "Method": "GetOrders",
-    "RelativePath": "api/Orders",
+    "RelativePath": "api/orders",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -158,7 +64,7 @@
   {
     "ContainingType": "Order_Management.Controllers.OrdersController",
     "Method": "CreateOrder",
-    "RelativePath": "api/Orders",
+    "RelativePath": "api/orders",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -193,7 +99,7 @@
   {
     "ContainingType": "Order_Management.Controllers.OrdersController",
     "Method": "GetOrder",
-    "RelativePath": "api/Orders/{id}",
+    "RelativePath": "api/orders/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -228,7 +134,7 @@
   {
     "ContainingType": "Order_Management.Controllers.OrdersController",
     "Method": "UpdateOrder",
-    "RelativePath": "api/Orders/{id}",
+    "RelativePath": "api/orders/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -277,7 +183,7 @@
   {
     "ContainingType": "Order_Management.Controllers.OrdersController",
     "Method": "DeleteOrder",
-    "RelativePath": "api/Orders/{id}",
+    "RelativePath": "api/orders/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -293,6 +199,100 @@
         "Type": "System.Void",
         "MediaTypes": [],
         "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "Order_Management.Controllers.OrderDetailsController",
+    "Method": "GetOrderDetails",
+    "RelativePath": "api/orders/{id}/order-details",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Order_Management.DTOs.OrderDetailDTO, Order Management, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "Order_Management.Controllers.OrderDetailsController",
+    "Method": "AddOrderDetail",
+    "RelativePath": "api/orders/{id}/order-details",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "createOrderDetailDto",
+        "Type": "Order_Management.DTOs.CreateOrderDetailDTO",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Order_Management.DTOs.OrderDetailDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
       },
       {
         "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
