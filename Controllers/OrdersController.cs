@@ -114,7 +114,7 @@ namespace Order_Management.Controllers
 
             var updatedOrder = await _orderRepository.UpdateOrderAsync(existingOrder);
 
-            return Ok(_mapper.Map<OrderDTO>(updatedOrder));
+            return Ok(new { message = "Order updated successfully", data = _mapper.Map<OrderDTO>(updatedOrder) });
         }
 
         //DELETE: api/Orders/{id}
@@ -133,7 +133,7 @@ namespace Order_Management.Controllers
                 return NotFound();
             }
 
-            return NoContent();
+            return Ok(new { message = "Order deleted successfully" });
         }
     }
 }

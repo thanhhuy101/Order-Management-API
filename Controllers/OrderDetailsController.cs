@@ -94,7 +94,7 @@ namespace Order_Management.Controllers
                 return NotFound();
             }
 
-            return NoContent();
+            return Ok(new { message = "Order detail deleted successfully" });
         }
     }
 }
