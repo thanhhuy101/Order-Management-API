@@ -1,0 +1,141 @@
+2025-03-21 18:19:06.352 +07:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-21 18:19:06.405 +07:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-03-21 18:19:06.422 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-03-21 18:19:06.485 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-03-21 18:19:06.494 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-21 18:19:06.497 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-03-21 18:19:06.503 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-03-21 18:19:06.512 +07:00 [INF] No migrations were applied. The database is already up to date.
+2025-03-21 18:19:06.515 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-03-21 18:19:06.518 +07:00 [INF] Database migrated successfully
+2025-03-21 18:19:06.602 +07:00 [INF] Now listening on: http://localhost:5029
+2025-03-21 18:19:06.714 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-21 18:19:06.716 +07:00 [INF] Hosting environment: Development
+2025-03-21 18:19:06.718 +07:00 [INF] Content root path: D:\demo .net\Order Management
+2025-03-21 18:19:08.446 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger - null null
+2025-03-21 18:19:08.648 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger - 301 0 null 206.4964ms
+2025-03-21 18:19:08.685 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/index.html - null null
+2025-03-21 18:19:08.756 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/index.html - 200 null text/html;charset=utf-8 71.4918ms
+2025-03-21 18:19:08.905 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/swagger-ui.css - null null
+2025-03-21 18:19:08.905 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/swagger-ui-bundle.js - null null
+2025-03-21 18:19:08.906 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-21 18:19:08.906 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/swagger-ui-standalone-preset.js - null null
+2025-03-21 18:19:08.918 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 12.2495ms
+2025-03-21 18:19:08.941 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-03-21 18:19:08.941 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-03-21 18:19:08.955 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-03-21 18:19:08.974 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/swagger-ui-bundle.js - 200 1096145 text/javascript 69.0473ms
+2025-03-21 18:19:08.974 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/swagger-ui-standalone-preset.js - 200 339486 text/javascript 68.7148ms
+2025-03-21 18:19:08.975 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/swagger-ui.css - 200 143943 text/css 69.6324ms
+2025-03-21 18:19:09.314 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_vs/browserLink - null null
+2025-03-21 18:19:09.796 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_vs/browserLink - 200 null text/javascript; charset=UTF-8 482.6478ms
+2025-03-21 18:19:10.702 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - null null
+2025-03-21 18:19:10.872 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 169.9826ms
+2025-03-21 18:19:11.134 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/favicon-32x32.png - null null
+2025-03-21 18:19:11.137 +07:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-03-21 18:19:11.139 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/favicon-32x32.png - 200 628 image/png 5.4856ms
+2025-03-21 18:21:22.980 +07:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-21 18:21:23.023 +07:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-03-21 18:21:23.039 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-03-21 18:21:23.093 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-03-21 18:21:23.101 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-21 18:21:23.103 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-03-21 18:21:23.106 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-03-21 18:21:23.113 +07:00 [INF] No migrations were applied. The database is already up to date.
+2025-03-21 18:21:23.115 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-03-21 18:21:23.117 +07:00 [INF] Database migrated successfully
+2025-03-21 18:21:23.173 +07:00 [INF] Now listening on: http://localhost:5029
+2025-03-21 18:21:23.254 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-21 18:21:23.256 +07:00 [INF] Hosting environment: Development
+2025-03-21 18:21:23.257 +07:00 [INF] Content root path: D:\demo .net\Order Management
+2025-03-21 18:21:23.833 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/index.html - null null
+2025-03-21 18:21:24.017 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/index.html - 200 null text/html;charset=utf-8 185.114ms
+2025-03-21 18:21:24.540 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-21 18:21:24.540 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_vs/browserLink - null null
+2025-03-21 18:21:24.547 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 6.7273ms
+2025-03-21 18:21:24.571 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_vs/browserLink - 200 null text/javascript; charset=UTF-8 30.9969ms
+2025-03-21 18:21:25.406 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - null null
+2025-03-21 18:21:25.522 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 115.9911ms
+2025-03-21 18:23:52.128 +07:00 [INF] Application is shutting down...
+2025-03-21 18:25:51.122 +07:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-21 18:25:51.171 +07:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2025-03-21 18:25:51.188 +07:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2025-03-21 18:25:51.244 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2025-03-21 18:25:51.254 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-03-21 18:25:51.257 +07:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-03-21 18:25:51.263 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-03-21 18:25:51.272 +07:00 [INF] No migrations were applied. The database is already up to date.
+2025-03-21 18:25:51.274 +07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2025-03-21 18:25:51.277 +07:00 [INF] Database migrated successfully
+2025-03-21 18:25:51.337 +07:00 [INF] Now listening on: http://localhost:5029
+2025-03-21 18:25:51.441 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-21 18:25:51.443 +07:00 [INF] Hosting environment: Development
+2025-03-21 18:25:51.444 +07:00 [INF] Content root path: D:\demo .net\Order Management
+2025-03-21 18:25:51.796 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/index.html - null null
+2025-03-21 18:25:51.995 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/index.html - 200 null text/html;charset=utf-8 200.5973ms
+2025-03-21 18:25:52.056 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - null null
+2025-03-21 18:25:52.067 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_framework/aspnetcore-browser-refresh.js - 200 13768 application/javascript; charset=utf-8 11.4046ms
+2025-03-21 18:25:52.426 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/_vs/browserLink - null null
+2025-03-21 18:25:52.460 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.1732ms
+2025-03-21 18:25:53.501 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - null null
+2025-03-21 18:25:53.625 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5029/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 123.1184ms
